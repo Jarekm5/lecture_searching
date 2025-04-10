@@ -33,12 +33,16 @@ def linear_search(sekv, number):
     return dict
 
 def pattern_search(seq, pattern):
+    mnoz = {}
     list_seq = []
-    for i in range(0, len(seq)-2):
-        sequence = seq[i] + seq[i+1] + seq[i+2]
-        if sequence == pattern:
+    ranges = len(pattern)
+    for i in range(len(seq)- ranges + 1):
+        if seq[i:i + ranges] == pattern:
             list_seq.append(i)
-    return list_seq
+    mnoz["index"] = list_seq
+    return mnoz
+
+def binary_search(seq, num):
 
 
 
@@ -47,6 +51,8 @@ def main():
     linear_search(readed_unordered, 5)
     readed_dna = read_data("sequential.json", "dna_sequence")
     pattern_search(readed_dna, "ATA")
+    readed_ordered = read_data("sequential.json", "ordered_numbers")
+    binary_search(readed_ordered, 6)
     pass
 
 
