@@ -22,20 +22,31 @@ def read_data(file_name, field):
 
 def linear_search(sekv, number):
     dict = {}
-    list_for_dummies = []
+    list_for = []
     o = 0
     for i, value in enumerate(sekv):
         if number == value:
-            list_for_dummies.append(i)
-            dict["index"] = list_for_dummies
+            list_for.append(i)
+            dict["index"] = list_for
             o += 1
     dict["count"] = o
-    return print(dict)
+    return dict
+
+def pattern_search(seq, pattern):
+    list_seq = []
+    for i in range(0, len(seq)-2):
+        sequence = seq[i] + seq[i+1] + seq[i+2]
+        if sequence == pattern:
+            list_seq.append(i)
+    return list_seq
+
 
 
 def main():
-    readed = read_data("sequential.json", "unordered_numbers")
-    linear_search(readed, 5)
+    readed_unordered = read_data("sequential.json", "unordered_numbers")
+    linear_search(readed_unordered, 5)
+    readed_dna = read_data("sequential.json", "dna_sequence")
+    pattern_search(readed_dna, "ATA")
     pass
 
 
